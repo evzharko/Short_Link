@@ -5,7 +5,7 @@ services:
     nginx:
 # используем последний стабильный образ nginx
         image: nginx:latest
-        restart: always
+        # restart: always
         # маршрутизируем порты
         ports:
             - "80:80"
