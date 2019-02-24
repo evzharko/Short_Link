@@ -17,4 +17,13 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+/*
+ * Личный кабинет
+ * */
+Route::middleware(['my'])
+    ->prefix('my')
+    ->group(function (){
+        Route::get('/', 'HomeController@index')->name('my');
+        Route::any('/create_links', 'ProfileMy\My@createLinks')->name('create_links');
+        Route::get('/list_links', 'ProfileMy\My@listLinks')->name('list_links');
+    });
