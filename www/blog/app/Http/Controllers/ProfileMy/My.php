@@ -22,26 +22,22 @@ class My extends Controller
 
     public function createLinks(Request $request)
     {
-        $checkPost = $request->post('subHttp');
-        if(!is_null($checkPost)) {
-            $link = new Short_link();
-            $link->id_user = $id_user = '1';
-            $link->long_link = $request->post('originalHttp');
-            $link->short_link = $this->genarationShortLink();
-//            dd('isnull');
-            return view('ProfileMy/createlinks', ['originalHttp' => $link->short_link]);
+        $checkPost = $request->post('originalHttp');
+        $link = new Short_link();
+        $link->id_user = $id_user = '1';
+        $link->long_link = $request->post('originalHttp');
+        $link->short_link = $this->genarationShortLink();
+
+        if (is_null($checkPost)) {
+            return view('ProfileMy/createlinks');
         } else {
-            $link = new Short_link();
-            $link->id_user = $id_user = '1';
-            $link->long_link = $request->post('originalHttp');
-            $link->short_link = $this->genarationShortLink();
-            dd($request);
             $link->save();
             return view('ProfileMy/createlinks', ['originalHttp' => $link->short_link]);
         }
     }
 
-    public function listLinks()
+    public
+    function listLinks()
     {
         return 'listlinks';
     }
