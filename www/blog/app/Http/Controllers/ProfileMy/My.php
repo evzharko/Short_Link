@@ -5,6 +5,7 @@ namespace App\Http\Controllers\ProfileMy;
 use App\Http\Controllers\Controller;
 use App\Short_link;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class My extends Controller
 {
@@ -22,13 +23,14 @@ class My extends Controller
 
     public function createLinks(Request $request)
     {
-        $checkPost = $request->post('originalHttp');
+        $originalHttp = $request->post('originalHttp');
         $link = new Short_link();
-        $link->id_user = $id_user = '1';
+        $link->id_user = $id_user = Auth::user()->getAuthIdentifier();
         $link->long_link = $request->post('originalHttp');
         $link->short_link = $this->genarationShortLink();
+        $link->count = 0;
 
-        if (is_null($checkPost)) {
+        if (is_null($originalHttp)) {
             return view('ProfileMy/createlinks');
         } else {
             $link->save();
@@ -39,7 +41,10 @@ class My extends Controller
     public
     function listLinks()
     {
-        return 'listlinks';
+        $allLinks = Short_link::query()->select('long_link', 'short_link', 'count')
+            ->where('id_user','=', Auth::user()->getAuthIdentifier())
+            ->get();
+        return view('ProfileMy/listlinks', ['allLinks' => $allLinks]);
     }
 
 }

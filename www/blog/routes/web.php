@@ -17,6 +17,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
+
 /*
  * Личный кабинет
  * */
@@ -27,3 +28,4 @@ Route::middleware(['my'])
         Route::any('/create_links', 'ProfileMy\My@createLinks')->name('create_links');
         Route::get('/list_links', 'ProfileMy\My@listLinks')->name('list_links');
     });
+Route::get('/{short_link}', 'RedirectLink@redirectToLongLink')->name('redirect.page');
