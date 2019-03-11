@@ -13,8 +13,9 @@
         </form>
         <div class="result" style="margin-top: 10px">
             @if (isset($originalHttp))
-                Короткая ссылка {{$originalHttp}}
+                Короткая ссылка <a target="_blank" href="{{env('APP_URL')}}/{{$originalHttp}}">{{env('APP_URL')}}/{{$originalHttp}}</a>
             @endif
         </div>
     </div>
 @endsection
+
