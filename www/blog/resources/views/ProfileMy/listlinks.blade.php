@@ -13,7 +13,7 @@
                 <tbody>
                 @foreach($allLinks as $items)
                     <tr>
-                        <td style="width: 20px">{{$items->long_link}}</td>
+                        <td style="width: 21px">{{$items->long_link}}</td>
                         <td>{{$items->short_link}}</td>
                         <td>{{$items->count}}</td>
                     </tr>
