@@ -25,7 +25,8 @@ Route::middleware(['my'])
     ->prefix('my')
     ->group(function (){
         Route::get('/', 'HomeController@index')->name('my');
-        Route::any('/create_links', 'ProfileMy\My@createLinks')->name('create_links');
+        Route::get('/create_links', 'ProfileMy\My@formLinks')->name('form_links');
+        Route::post('/create_links', 'ProfileMy\My@linksPost')->name('links_post');
         Route::get('/list_links', 'ProfileMy\My@listLinks')->name('list_links');
     });
 Route::get('/{short_link}', 'RedirectLink@redirectToLongLink')->name('redirect.page');

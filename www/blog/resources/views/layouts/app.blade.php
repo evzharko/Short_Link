@@ -38,7 +38,7 @@
                         @auth
                             <ul class="navbar-nav mr-auto">
                             <li class="nav-item">
-                                <a class="nav-link active" href="{{ route('create_links') }}">Добавить ссылку</a>
+                                <a class="nav-link active" href="{{ route('form_links') }}">Добавить ссылку</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('list_links') }}">Список всех ссылок</a>
