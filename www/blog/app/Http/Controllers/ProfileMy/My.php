@@ -43,7 +43,7 @@ class My extends Controller
      */
     public function linksPost(Request $request)
     {
-        $originalHttp = $request->post('originalHttp');
+//        $originalHttp = $request->post('originalHttp');
         $link = new Short_link();
         $link->id_user = $id_user = Auth::user()->getAuthIdentifier();
         $link->long_link = $request->post('originalHttp');
