@@ -1,0 +1,8 @@
+TABLE {
+    table-layout: fixed; /* Ячейки фиксированной ширины */
+}
+.long_link {
+    white-space: nowrap; /* Отменяем перенос текста */
+    overflow: hidden; /* Обрезаем содержимое */
+    text-overflow: ellipsis; /* Многоточие */
+}

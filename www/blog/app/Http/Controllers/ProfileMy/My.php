@@ -14,6 +14,7 @@ class My extends Controller
     {
         $this->middleware('auth');
     }
+
     /**
      * @return string
      */
@@ -51,16 +52,15 @@ class My extends Controller
         $link->count = 0;
         $link->save();
 
-        return Redirect::back()->with('short_msg',$link->short_link);
+        return Redirect::back()->with('short_msg', $link->short_link);
     }
 
-        public
-        function listLinks()
-        {
-            $allLinks = Short_link::query()->select('long_link', 'short_link', 'count')
-                ->where('id_user', '=', Auth::user()->getAuthIdentifier())
-                ->paginate('5');
-            return view('ProfileMy/listlinks', ['allLinks' => $allLinks]);
-        }
-
+    public function listLinks()
+    {
+        $allLinks = Short_link::query()->select('long_link', 'short_link', 'count')
+            ->where('id_user', '=', Auth::user()->getAuthIdentifier())
+            ->paginate('5');
+        return view('ProfileMy/listlinks', ['allLinks' => $allLinks]);
     }
+
+}
